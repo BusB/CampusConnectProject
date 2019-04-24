@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">CampusConnectProject</string>
+    <string name="add_to_calendar">Add to Calendar</string>
+    <string name="add_to_favorites">Add to Favorites</string>
+    <string name="favorite_heading">Favorites</string>
+    <string name="sign_up_button">Sign Up</string>
+    <string name="sign_in_button">Sign In</string>
+    <string name="password">Password</string>
+    <string name="user_name">Teachers College Email</string>
+    <string name="instructions">Please enter your information to create an account.</string>
+    <string name="enter_name">Name:</string>
+    <string name="TC_Email">TC Email (ex. abc123@tc.columbia.edu)</string>
+    <string name="login_button">Log In</string>
+    <string name="create_account">Create Account</string>
+
+</resources>
