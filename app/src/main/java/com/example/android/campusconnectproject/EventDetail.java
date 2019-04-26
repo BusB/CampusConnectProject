@@ -8,10 +8,19 @@ import android.text.Html;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.io.File;
+import java.io.IOException;
 
 import biweekly.Biweekly;
+import biweekly.ICalVersion;
 import biweekly.ICalendar;
 import biweekly.component.VEvent;
+import biweekly.io.text.ICalWriter;
 
 
 public class EventDetail extends AppCompatActivity {
@@ -20,6 +29,7 @@ public class EventDetail extends AppCompatActivity {
     private TextView dateView;
     private TextView eventNameView;
     private TextView eventDescripView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,13 +47,17 @@ public class EventDetail extends AppCompatActivity {
         eventNameView.setText(intent.getStringExtra("name"));
         eventDescripView.setText(Html.fromHtml(intent.getStringExtra("description")));
 
+
         Button addToFaves = findViewById(R.id.add_to_faves);
                 addToFaves.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        FirebaseDatabase database = FirebaseDatabase.getInstance();
+                        DatabaseReference userFaves = database.getReference("Favorited-events");
+                        String str = intent.getStringExtra("event");
+                        userFaves.push().setValue(str);
+
                         Intent intent1 = new Intent(EventDetail.this, ProfileActivity.class);
-                        ICalendar ical = Biweekly.parse(intent.getStringExtra("event")).first();
-                        intent1.putExtra("event", Biweekly.write(ical).go());
                         startActivity(intent1);
                     }
                 });

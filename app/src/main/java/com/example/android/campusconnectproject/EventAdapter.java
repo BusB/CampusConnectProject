@@ -9,7 +9,9 @@ import android.view.ViewGroup;
 
 import org.jsoup.Jsoup;
 
+import java.io.File;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.List;
 
 import biweekly.Biweekly;
@@ -48,11 +50,10 @@ public class EventAdapter extends RecyclerView.Adapter<EventViewHolder> {
                 RecycleView eventsListActivity = (RecycleView) context;
                 detailFormat = new SimpleDateFormat("E MMM d 'at' h:mm");
                 ICalendar ical = new ICalendar();
+                event = events.get(viewHolder.getAdapterPosition());
                 ical.addEvent(event);
 
                 Intent intent = new Intent(eventsListActivity, EventDetail.class);
-
-                event = events.get(viewHolder.getAdapterPosition());
                 intent.putExtra("event", Biweekly.write(ical).go());
                 intent.putExtra("name", event.getSummary().getValue());
                 intent.putExtra("date",  detailFormat.format(event.getDateStart().getValue()));

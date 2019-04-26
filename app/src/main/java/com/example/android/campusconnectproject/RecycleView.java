@@ -42,7 +42,7 @@ public class RecycleView extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recycler_view);
 
-        FirebaseApp.initializeApp(RecycleView.this);
+        FirebaseApp.initializeApp(this);
         auth = FirebaseAuth.getInstance();
 
 
