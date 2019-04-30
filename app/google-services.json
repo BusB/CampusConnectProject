@@ -1,42 +1,42 @@
 {
   "project_info": {
-    "project_number": "910209173892",
-    "firebase_url": "https://campusconnectproject.firebaseio.com",
-    "project_id": "campusconnectproject",
-    "storage_bucket": "campusconnectproject.appspot.com"
+    "project_number": "201344503829",
+    "firebase_url": "https://campusconnectproject-master.firebaseio.com",
+    "project_id": "campusconnectproject-master",
+    "storage_bucket": "campusconnectproject-master.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:910209173892:android:213b0822b11af859",
+        "mobilesdk_app_id": "1:201344503829:android:213b0822b11af859",
         "android_client_info": {
           "package_name": "com.example.android.campusconnectproject"
         }
       },
       "oauth_client": [
         {
-          "client_id": "910209173892-jhgga2hh9puoq9r55cvsc8sisf945ad2.apps.googleusercontent.com",
+          "client_id": "201344503829-eta40fd874un6uoqr8dkitdjhmq4cg6q.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.example.android.campusconnectproject",
-            "certificate_hash": "150912ff3c1db9a2beef5442955a49f5cfccb8af"
+            "certificate_hash": "7dc5ce0bb5b81d83cde22ffe8bb4452d3fa2c788"
           }
         },
         {
-          "client_id": "910209173892-k7s8gct2n4u2rtm85m8dq781v3ujalmi.apps.googleusercontent.com",
+          "client_id": "201344503829-48gjrtag5lgnnecasqtn53e1mo0llh8u.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyC2WLZEBnng554viUcHvuHPO2d-oDqPk7A"
+          "current_key": "AIzaSyCbCQWMMq3uTIGj2BuO7mJupPq6jMamHBw"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "910209173892-k7s8gct2n4u2rtm85m8dq781v3ujalmi.apps.googleusercontent.com",
+              "client_id": "201344503829-48gjrtag5lgnnecasqtn53e1mo0llh8u.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

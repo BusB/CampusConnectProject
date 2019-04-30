@@ -1,12 +1,14 @@
 package com.example.android.campusconnectproject;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.io.InputStream;
 import java.net.URL;
@@ -19,6 +21,9 @@ public class MainActivity extends AppCompatActivity {
 
     private TextView mainText;
     private List<ICalendar> icals;
+    private FirebaseAuth mFirebaseAuth;
+    private FirebaseAuth.AuthStateListener mAuthStateListener;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
