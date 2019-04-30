@@ -35,6 +35,7 @@ public class EventDetail extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event_detail);
+        setTitle("Event Details");
 
         eventDetail = findViewById(R.id.card_view);
         dateView = findViewById(R.id.event_date);

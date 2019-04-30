@@ -13,6 +13,7 @@ import android.widget.Toast;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
 
 import org.jsoup.Jsoup;
 
@@ -37,6 +38,7 @@ public class RecycleView extends AppCompatActivity {
 
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,9 +53,11 @@ public class RecycleView extends AppCompatActivity {
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
                 if (user == null)
-                    startActivity(new Intent(RecycleView.this, SignInActivity.class));
+                    startActivity(new Intent(RecycleView.this, LoginActivity.class));
             }
         };
+
+
 
 
         setTitle("TC Events");
@@ -88,4 +92,17 @@ public class RecycleView extends AppCompatActivity {
         events = ical.getEvents();
 
     }
+
+    protected void onStart() {
+        super.onStart();
+        auth.addAuthStateListener(authListener);
+    }
+
+    @Override
+
+    public void onStop() {
+        super.onStop();
+        auth.removeAuthStateListener(authListener);
+    }
+
 }

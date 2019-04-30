@@ -10,15 +10,22 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ProfileActivity"></activity>
-        <activity android:name=".EventDetail" />
-        <activity android:name=".RecycleView"><intent-filter>
-        <action android:name="android.intent.action.MAIN" />
+        <activity
+            android:name=".ProfileActivity"
+            android:parentActivityName=".RecycleView"></activity>
+        <activity
+            android:name=".EventDetail"
+            android:parentActivityName=".RecycleView"></activity>
+        <activity
+            android:name=".RecycleView">
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
 
-        <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter></activity>
-        <activity android:name=".MainActivity" />
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+    </activity>
+    <activity android:name=".MainActivity" />
 
-    </application>
+</application>
 
-</manifest>
+    </manifest>

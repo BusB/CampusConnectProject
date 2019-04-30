@@ -12,8 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="36sp"
-        android:layout_marginBottom="8dp"
-        android:textFontWeight="1800"
+        android:layout_margin="7dp"
         android:text="@string/favorite_heading"
         android:hyphenationFrequency="none" />
 

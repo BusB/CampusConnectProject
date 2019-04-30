@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">CampusConnectProject</string>
+    <string name="app_name">Campus Connect Project</string>
     <string name="add_to_calendar">Add to Calendar</string>
     <string name="add_to_favorites">Add to Favorites</string>
     <string name="favorite_heading">Favorites</string>
