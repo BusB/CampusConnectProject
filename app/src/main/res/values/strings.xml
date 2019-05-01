@@ -13,4 +13,8 @@
     <string name="login_button">Log In</string>
     <string name="create_account">Create Account</string>
 
+    <string name="menu_home">Home</string>
+    <string name="menu_search">Search</string>
+    <string name="menu_notifications">Notifications</string>
+
 </resources>

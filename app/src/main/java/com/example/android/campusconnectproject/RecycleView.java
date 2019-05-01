@@ -1,27 +1,20 @@
 package com.example.android.campusconnectproject;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.os.StrictMode;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
-import android.view.View;
-import android.widget.Button;
 import android.widget.Toast;
 
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DatabaseReference;
-
-import org.jsoup.Jsoup;
 
 import java.io.InputStream;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 import biweekly.Biweekly;
 import biweekly.ICalendar;
@@ -36,7 +29,10 @@ public class RecycleView extends AppCompatActivity {
     private FirebaseAuth auth;
     private FirebaseAuth.AuthStateListener authListener;
 
-
+//    private static final String SELECTED_ITEM = "arg_selected_item";
+//
+//    private BottomNavigationView mBottomNav;
+//    private int mSelectedItem;
 
 
     @Override
