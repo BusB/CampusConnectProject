@@ -1,31 +1,22 @@
 package com.example.android.campusconnectproject;
 
 import android.content.Intent;
-import android.os.StrictMode;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v7.widget.LinearLayoutManager;
-import android.view.View;
-import android.widget.Button;
+import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import org.jsoup.Jsoup;
-
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 import biweekly.Biweekly;
 import biweekly.ICalendar;
@@ -46,6 +37,22 @@ public class ProfileActivity extends RecycleView {
         setContentView(R.layout.activity_profile);
 
         setTitle("Profile");
+
+        BottomNavigationView navigation = findViewById(R.id.navigation);
+        navigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                switch (menuItem.getItemId()) {
+                    case R.id.recycler_view_profile:
+                        break;
+                    case R.id.recycler_view:
+                        Intent recycler = new Intent (ProfileActivity.this, RecycleView.class);
+                        startActivity(recycler);
+                        break;
+                }
+                return false;
+            }
+        });
 
         recyclerView = findViewById(R.id.recycler_view_profile);
         recyclerView.setHasFixedSize(true);
@@ -74,5 +81,10 @@ public class ProfileActivity extends RecycleView {
         adapter = new EventAdapter(events, this);
         recyclerView.setAdapter(adapter);
 
+    }
+
+    public void favoritesButton(MenuItem item) {
+//        Intent recycler = new Intent(ProfileActivity.this, RecycleView.class);
+//        startActivity(recycler);
     }
 }
