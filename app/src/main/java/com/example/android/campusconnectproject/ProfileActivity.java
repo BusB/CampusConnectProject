@@ -78,9 +78,9 @@ public class ProfileActivity extends RecycleView {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 switch (menuItem.getItemId()) {
-                    case R.id.recycler_view_profile:
+                    case R.id.menu_favorites:
                         break;
-                    case R.id.recycler_view:
+                    case R.id.menu_home:
                         Intent recycler = new Intent (ProfileActivity.this, RecycleView.class);
                         startActivity(recycler);
                         break;

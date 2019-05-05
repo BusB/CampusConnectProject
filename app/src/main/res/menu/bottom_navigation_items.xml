@@ -3,9 +3,9 @@
     <item
         android:id="@+id/menu_home"
         android:title="@string/menu_home"
-        android:icon="@drawable/ic_home_black"
-        android:onClick="homeButton"
-        />
+        android:icon="@drawable/ic_home_black"/>
+        <!--android:onClick="homeButton"-->
+
 
     <item
         android:id="@+id/menu_search"
@@ -16,6 +16,7 @@
     <item
         android:id="@+id/menu_favorites"
         android:title="@string/menu_favorites"
-        android:icon="@drawable/ic_notifications_black"
-        android:onClick="favoritesButton"/>
+        android:icon="@drawable/ic_notifications_black"/>
+        <!--android:onClick="favoritesButton"-->
+
 </menu>

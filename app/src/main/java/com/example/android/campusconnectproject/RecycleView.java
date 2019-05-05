@@ -61,11 +61,11 @@ public class RecycleView extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 switch (menuItem.getItemId()) {
-                    case R.id.recycler_view_profile:
+                    case R.id.menu_favorites:
                         Intent profile = new Intent(RecycleView.this, ProfileActivity.class);
                         startActivity(profile);
                         break;
-                    case R.id.recycler_view:
+                    case R.id.menu_home:
                         break;
                 }
                 return false;
@@ -142,14 +142,14 @@ public class RecycleView extends AppCompatActivity {
         auth.addAuthStateListener(authListener);
     }
 
-    public void favoritesButton(MenuItem item) {
-        Intent profile = new Intent(RecycleView.this, ProfileActivity.class);
-        startActivity(profile);
-
-    }
-
-    public void homeButton(MenuItem item) {
-    }
+//    public void favoritesButton(MenuItem item) {
+//        Intent profile = new Intent(RecycleView.this, ProfileActivity.class);
+//        startActivity(profile);
+//
+//    }
+//
+//    public void homeButton(MenuItem item) {
+//    }
 
     public void logOut(MenuItem item) {
         auth.signOut();
