@@ -1,30 +1,18 @@
 package com.example.android.campusconnectproject;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.text.Html;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-
-import java.io.File;
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
-
-import biweekly.Biweekly;
-import biweekly.ICalVersion;
-import biweekly.ICalendar;
-import biweekly.component.VEvent;
-import biweekly.io.text.ICalWriter;
 
 
 public class EventDetail extends AppCompatActivity {
@@ -64,7 +52,6 @@ public class EventDetail extends AppCompatActivity {
                         FirebaseUser user = auth.getCurrentUser();
                         DatabaseReference userFaves = database.getReference(user.getUid());
                         String str = intent.getStringExtra("event");
-                        Map<String, Object> faveUpdate = new HashMap<>();
                         userFaves.child("Favorited-events").push().setValue(str);
 
                         Intent intent1 = new Intent(EventDetail.this, ProfileActivity.class);
@@ -72,6 +59,13 @@ public class EventDetail extends AppCompatActivity {
                     }
                 });
 
+        Button addToCalendar = findViewById(R.id.add_to_calendar);
+        addToCalendar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
 
     }
 }

@@ -50,8 +50,9 @@ public class RecycleView extends AppCompatActivity {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
-                if (user == null){
-                    startActivity(new Intent(RecycleView.this, LoginActivity.class));} else {
+                if (user == null) {
+                    startActivity(new Intent(RecycleView.this, LoginActivity.class));
+                } else {
 
                 }
             }
@@ -82,7 +83,9 @@ public class RecycleView extends AppCompatActivity {
             }
         });
 
-        try {initialData();} catch (Exception e) {
+        try {
+            initialData();
+        } catch (Exception e) {
             Toast.makeText(this, "Could not initialize data", Toast.LENGTH_SHORT).show();
         }
 
@@ -95,8 +98,7 @@ public class RecycleView extends AppCompatActivity {
 
     }
 
-    public void enableStrictMode ()
-    {
+    public void enableStrictMode() {
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
 
         StrictMode.setThreadPolicy(policy);
@@ -112,14 +114,14 @@ public class RecycleView extends AppCompatActivity {
 
     }
 
-    public boolean onCreateOptionsMenu (Menu menu){
+    public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.top_menu, menu);
 
         return true;
     }
 
-    public boolean onOptionsItemSelected (MenuItem item){
+    public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.logout:
                 Toast.makeText(this, "Logged Out", Toast.LENGTH_SHORT).show();
@@ -153,14 +155,6 @@ public class RecycleView extends AppCompatActivity {
         auth.addAuthStateListener(authListener);
     }
 
-//    public void favoritesButton(MenuItem item) {
-//        Intent profile = new Intent(RecycleView.this, ProfileActivity.class);
-//        startActivity(profile);
-//
-//    }
-//
-//    public void homeButton(MenuItem item) {
-//    }
 
     public void logOut(MenuItem item) {
         auth.signOut();
