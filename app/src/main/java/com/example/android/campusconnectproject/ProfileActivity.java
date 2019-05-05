@@ -6,7 +6,6 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.MenuItem;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -30,7 +29,6 @@ public class ProfileActivity extends RecycleView {
     private VEvent eventNew;
     private EventAdapter adapter;
     private android.support.v7.widget.RecyclerView recyclerView;
-    private TextView favoritesHead;
     private FirebaseAuth auth;
 
 
@@ -42,12 +40,11 @@ public class ProfileActivity extends RecycleView {
         auth = FirebaseAuth.getInstance();
 
 
-        setTitle("Profile");
+        setTitle("Favorites");
 
         recyclerView = findViewById(R.id.recycler_view_profile);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        favoritesHead = findViewById(R.id.favorite_heading);
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         FirebaseUser user = auth.getCurrentUser();
         DatabaseReference userFaves = database.getReference(user.getUid()).child("Favorited-events");
