@@ -7,8 +7,9 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Toast;
 
 import com.google.firebase.FirebaseApp;
@@ -52,23 +53,6 @@ public class RecycleView extends AppCompatActivity {
                 }
             }
         };
-
-//        public boolean onCreateOptionsMenu (Menu menu){
-//            getMenuInflater().inflate(R.menu.top_menu, menu);
-//            return true;
-//        }
-//
-//        public boolean onOptionsItemSelected (MenuItem item){
-//            switch (item.getItemId()) {
-//                case R.id.logout:
-//                    Toast.makeText(this, "Share it baby", Toast.LENGTH_SHORT).show();
-//                    return true;
-//                default:
-//                    return super.onOptionsItemSelected(item);
-//            }
-//        }
-
-
 
         setTitle("TC Events");
 
@@ -118,6 +102,22 @@ public class RecycleView extends AppCompatActivity {
 
     }
 
+    public boolean onCreateOptionsMenu (Menu menu){
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.top_menu, menu);
+        return true;
+    }
+
+    public boolean onOptionsItemSelected (MenuItem item){
+        switch (item.getItemId()) {
+            case R.id.logout:
+                Toast.makeText(this, "Logged Out", Toast.LENGTH_SHORT).show();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
     protected void onStart() {
         super.onStart();
         auth.addAuthStateListener(authListener);
@@ -142,13 +142,6 @@ public class RecycleView extends AppCompatActivity {
         auth.addAuthStateListener(authListener);
     }
 
-    public void logOut(View view) {
-        auth.signOut();
-    }
-
-
-
-
     public void favoritesButton(MenuItem item) {
         Intent profile = new Intent(RecycleView.this, ProfileActivity.class);
         startActivity(profile);
@@ -156,5 +149,9 @@ public class RecycleView extends AppCompatActivity {
     }
 
     public void homeButton(MenuItem item) {
+    }
+
+    public void logOut(MenuItem item) {
+        auth.signOut();
     }
 }
