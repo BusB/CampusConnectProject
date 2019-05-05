@@ -17,6 +17,8 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 import biweekly.Biweekly;
 import biweekly.ICalVersion;
@@ -62,6 +64,7 @@ public class EventDetail extends AppCompatActivity {
                         FirebaseUser user = auth.getCurrentUser();
                         DatabaseReference userFaves = database.getReference(user.getUid());
                         String str = intent.getStringExtra("event");
+                        Map<String, Object> faveUpdate = new HashMap<>();
                         userFaves.child("Favorited-events").push().setValue(str);
 
                         Intent intent1 = new Intent(EventDetail.this, ProfileActivity.class);

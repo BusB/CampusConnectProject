@@ -91,7 +91,7 @@ public class ProfileActivity extends RecycleView {
 //        Intent recycler = new Intent(ProfileActivity.this, RecycleView.class);
 //        startActivity(recycler);
 //    }
-
+//
 //    public void favoritesButton(MenuItem item) {
 //        Intent recycler = new Intent(ProfileActivity.this, RecycleView.class);
 //        startActivity(recycler);

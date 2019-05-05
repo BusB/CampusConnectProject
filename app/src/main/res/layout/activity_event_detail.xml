@@ -51,6 +51,8 @@
             android:hyphenationFrequency="none"
             tools:text="Event Name" />
 
+
+
         <Button
             android:id="@+id/add_to_faves"
             android:layout_width="match_parent"

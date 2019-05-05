@@ -1,5 +1,7 @@
 package com.example.android.campusconnectproject;
 
+import android.app.SearchManager;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
@@ -10,6 +12,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.support.v7.widget.SearchView;
 import android.widget.Toast;
 
 import com.google.firebase.FirebaseApp;
@@ -56,7 +59,7 @@ public class RecycleView extends AppCompatActivity {
 
         setTitle("TC Events");
 
-        BottomNavigationView navigation = findViewById(R.id.navigation);
+        final BottomNavigationView navigation = findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
@@ -66,6 +69,13 @@ public class RecycleView extends AppCompatActivity {
                         startActivity(profile);
                         break;
                     case R.id.menu_home:
+                        break;
+                    case R.id.menu_search:
+                        SearchManager searchManager =
+                                (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+                        SearchView searchView = (SearchView) menuItem.getActionView();
+                        searchView.setSearchableInfo(
+                                searchManager.getSearchableInfo(getComponentName()));
                         break;
                 }
                 return false;
@@ -105,6 +115,7 @@ public class RecycleView extends AppCompatActivity {
     public boolean onCreateOptionsMenu (Menu menu){
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.top_menu, menu);
+
         return true;
     }
 

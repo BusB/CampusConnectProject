@@ -14,22 +14,36 @@
         <activity android:name=".LoginActivity"></activity>
         <activity
             android:name=".ProfileActivity"
+            android:launchMode="singleTop"
             android:parentActivityName=".RecycleView" />
+
+        <meta-data
+            android:name="android.app.searchable"
+            android:resource="@xml/searchable" />
+
         <activity
             android:name=".EventDetail"
             android:parentActivityName=".RecycleView" />
-        <activity android:name=".RecycleView">
+        <activity
+            android:name=".RecycleView"
+            android:launchMode="singleTop">
+            <meta-data
+                android:name="android.app.searchable"
+                android:resource="@xml/searchable" />
+
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity" />
+        <activity android:name=".SearchResultsActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH" />
+            </intent-filter>
+        </activity>
 
-        <meta-data
-            android:name="preloaded_fonts"
-            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>
