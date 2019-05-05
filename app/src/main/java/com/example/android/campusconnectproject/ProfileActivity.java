@@ -44,22 +44,6 @@ public class ProfileActivity extends RecycleView {
 
         setTitle("Profile");
 
-        BottomNavigationView navigation = findViewById(R.id.navigation);
-        navigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-                switch (menuItem.getItemId()) {
-                    case R.id.recycler_view_profile:
-                        break;
-                    case R.id.recycler_view:
-                        Intent recycler = new Intent (ProfileActivity.this, RecycleView.class);
-                        startActivity(recycler);
-                        break;
-                }
-                return false;
-            }
-        });
-
         recyclerView = findViewById(R.id.recycler_view_profile);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -89,10 +73,30 @@ public class ProfileActivity extends RecycleView {
         adapter = new EventAdapter(events, this);
         recyclerView.setAdapter(adapter);
 
-    }
+        BottomNavigationView navigation = findViewById(R.id.navigation);
+        navigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                switch (menuItem.getItemId()) {
+                    case R.id.recycler_view_profile:
+                        break;
+                    case R.id.recycler_view:
+                        Intent recycler = new Intent (ProfileActivity.this, RecycleView.class);
+                        startActivity(recycler);
+                        break;
+                }
+                return false;
+            }
+        });
 
-    public void favoritesButton(MenuItem item) {
+    }
+//    public void homeButton(MenuItem item) {
 //        Intent recycler = new Intent(ProfileActivity.this, RecycleView.class);
 //        startActivity(recycler);
-    }
+//    }
+
+//    public void favoritesButton(MenuItem item) {
+//        Intent recycler = new Intent(ProfileActivity.this, RecycleView.class);
+//        startActivity(recycler);
+//    }
 }

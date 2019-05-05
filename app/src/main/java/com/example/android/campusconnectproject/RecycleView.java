@@ -146,14 +146,15 @@ public class RecycleView extends AppCompatActivity {
         auth.signOut();
     }
 
-    public void homeButton(MenuItem item) {
-        Toast.makeText(this, "Could not initialize data", Toast.LENGTH_SHORT).show();
-    }
+
 
 
     public void favoritesButton(MenuItem item) {
-//        Intent profile = new Intent(RecycleView.this, ProfileActivity.class);
-//        startActivity(profile);
+        Intent profile = new Intent(RecycleView.this, ProfileActivity.class);
+        startActivity(profile);
 
+    }
+
+    public void homeButton(MenuItem item) {
     }
 }
