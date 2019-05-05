@@ -4,8 +4,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
+import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 import com.google.firebase.FirebaseApp;
@@ -29,11 +32,6 @@ public class RecycleView extends AppCompatActivity {
     private FirebaseAuth auth;
     private FirebaseAuth.AuthStateListener authListener;
 
-//    private static final String SELECTED_ITEM = "arg_selected_item";
-//
-//    private BottomNavigationView mBottomNav;
-//    private int mSelectedItem;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,12 +51,40 @@ public class RecycleView extends AppCompatActivity {
             }
         };
 
+//        public boolean onCreateOptionsMenu (Menu menu){
+//            getMenuInflater().inflate(R.menu.top_menu, menu);
+//            return true;
+//        }
+//
+//        public boolean onOptionsItemSelected (MenuItem item){
+//            switch (item.getItemId()) {
+//                case R.id.logout:
+//                    Toast.makeText(this, "Share it baby", Toast.LENGTH_SHORT).show();
+//                    return true;
+//                default:
+//                    return super.onOptionsItemSelected(item);
+//            }
+//        }
 
 
 
         setTitle("TC Events");
 
-
+        BottomNavigationView navigation = findViewById(R.id.navigation);
+        navigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                switch (menuItem.getItemId()) {
+                    case R.id.recycler_view_profile:
+                        Intent profile = new Intent(RecycleView.this, ProfileActivity.class);
+                        startActivity(profile);
+                        break;
+                    case R.id.recycler_view:
+                        break;
+                }
+                return false;
+            }
+        });
 
         try {initialData();} catch (Exception e) {
             Toast.makeText(this, "Could not initialize data", Toast.LENGTH_SHORT).show();
@@ -101,4 +127,18 @@ public class RecycleView extends AppCompatActivity {
         auth.removeAuthStateListener(authListener);
     }
 
+    public void logOut(View view) {
+        auth.signOut();
+    }
+
+    public void homeButton(MenuItem item) {
+        Toast.makeText(this, "Could not initialize data", Toast.LENGTH_SHORT).show();
+    }
+
+
+    public void favoritesButton(MenuItem item) {
+//        Intent profile = new Intent(RecycleView.this, ProfileActivity.class);
+//        startActivity(profile);
+
+    }
 }
