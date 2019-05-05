@@ -9,6 +9,8 @@ import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -28,13 +30,17 @@ public class ProfileActivity extends RecycleView {
     private VEvent eventNew;
     private EventAdapter adapter;
     private android.support.v7.widget.RecyclerView recyclerView;
-    TextView favoritesHead;
+    private TextView favoritesHead;
+    private FirebaseAuth auth;
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+        auth = FirebaseAuth.getInstance();
+
 
         setTitle("Profile");
 
@@ -59,7 +65,8 @@ public class ProfileActivity extends RecycleView {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         favoritesHead = findViewById(R.id.favorite_heading);
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference userFaves = database.getReference("Favorited-events");
+        FirebaseUser user = auth.getCurrentUser();
+        DatabaseReference userFaves = database.getReference(user.getUid()).child("Favorited-events");
             userFaves.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
@@ -69,8 +76,9 @@ public class ProfileActivity extends RecycleView {
                         VEvent event = ical.getEvents().get(0);
                         events.add(event);
                         adapter = new EventAdapter(events, ProfileActivity.this);
-                        recyclerView.setAdapter(adapter);
                     }
+                        recyclerView.setAdapter(adapter);
+
                 }
                 @Override
                 public void onCancelled(DatabaseError error) {

@@ -1,5 +1,6 @@
 package com.example.android.campusconnectproject;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -29,7 +30,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void logIn(View view) {
-        String email = emailEditText.getText().toString();
+        final String email = emailEditText.getText().toString();
         String password = passwordEditText.getText().toString();
 
         mrAuth.signInWithEmailAndPassword(email, password)
@@ -41,7 +42,11 @@ public class LoginActivity extends AppCompatActivity {
                         } else {
                             Toast.makeText(LoginActivity.this, task.getResult().getUser().getEmail() + " logged in successful",
                                     Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(LoginActivity.this, RecycleView.class);
+                            intent.putExtra("username", email);
+                            startActivity(intent);
                             finish();
+
                         }
                     }
                 });

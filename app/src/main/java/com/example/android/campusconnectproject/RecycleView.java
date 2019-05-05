@@ -46,8 +46,10 @@ public class RecycleView extends AppCompatActivity {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
-                if (user == null)
-                    startActivity(new Intent(RecycleView.this, LoginActivity.class));
+                if (user == null){
+                    startActivity(new Intent(RecycleView.this, LoginActivity.class));} else {
+
+                }
             }
         };
 
@@ -110,6 +112,7 @@ public class RecycleView extends AppCompatActivity {
         enableStrictMode();
         URL tcEventURL = new URL("https://www.tc.columbia.edu/events/ics-feed/");
         InputStream tcEventStream = tcEventURL.openStream();
+        String java = "hello";
         ical = Biweekly.parse(tcEventStream).first();
         events = ical.getEvents();
 
@@ -125,6 +128,18 @@ public class RecycleView extends AppCompatActivity {
     public void onStop() {
         super.onStop();
         auth.removeAuthStateListener(authListener);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        auth.removeAuthStateListener(authListener);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        auth.addAuthStateListener(authListener);
     }
 
     public void logOut(View view) {
