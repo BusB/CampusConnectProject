@@ -88,17 +88,8 @@ public class ProfileActivity extends RecycleView {
         });
 
         Menu menu = navigation.getMenu();
-        MenuItem menuItem = menu.getItem(2);
+        MenuItem menuItem = menu.getItem(1);
         menuItem.setChecked(true);
 
     }
-//    public void homeButton(MenuItem item) {
-//        Intent recycler = new Intent(ProfileActivity.this, RecycleView.class);
-//        startActivity(recycler);
-//    }
-
-//    public void favoritesButton(MenuItem item) {
-//        Intent recycler = new Intent(ProfileActivity.this, RecycleView.class);
-//        startActivity(recycler);
-//    }
 }

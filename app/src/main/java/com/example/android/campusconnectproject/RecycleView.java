@@ -1,7 +1,5 @@
 package com.example.android.campusconnectproject;
 
-import android.app.SearchManager;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
@@ -12,7 +10,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.support.v7.widget.SearchView;
 import android.widget.Toast;
 
 import com.google.firebase.FirebaseApp;
@@ -21,14 +18,11 @@ import com.google.firebase.auth.FirebaseUser;
 
 import java.io.InputStream;
 import java.net.URL;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
 import biweekly.Biweekly;
 import biweekly.ICalendar;
 import biweekly.component.VEvent;
-import biweekly.property.DateStart;
 
 public class RecycleView extends AppCompatActivity {
 
@@ -76,13 +70,13 @@ public class RecycleView extends AppCompatActivity {
                     case R.id.menu_home:
 
                         break;
-                    case R.id.menu_search:
-                        SearchManager searchManager =
-                                (SearchManager) getSystemService(Context.SEARCH_SERVICE);
-                        SearchView searchView = (SearchView) menuItem.getActionView();
-                        searchView.setSearchableInfo(
-                                searchManager.getSearchableInfo(getComponentName()));
-                        break;
+//                    case R.id.menu_search:
+//                        SearchManager searchManager =
+//                                (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+//                        SearchView searchView = (SearchView) menuItem.getActionView();
+//                        searchView.setSearchableInfo(
+//                                searchManager.getSearchableInfo(getComponentName()));
+//                        break;
                 }
                 return false;
             }
