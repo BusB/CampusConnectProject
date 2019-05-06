@@ -8,6 +8,7 @@ import android.text.Html;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -18,8 +19,7 @@ import biweekly.Biweekly;
 import biweekly.ICalendar;
 import biweekly.component.VEvent;
 
-
-public class EventDetail extends AppCompatActivity {
+public class FavoriteDetail extends AppCompatActivity {
 
     private CardView eventDetail;
     private TextView dateView;
@@ -31,10 +31,10 @@ public class EventDetail extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_event_detail);
+        setContentView(R.layout.activity_favorite_detail);
         setTitle("Event Details");
 
-        eventDetail = findViewById(R.id.card_view);
+        eventDetail = findViewById(R.id.activity_fave_detail);
         dateView = findViewById(R.id.event_date);
         eventNameView = findViewById(R.id.event_name);
         eventDescripView = findViewById(R.id.event_description);
@@ -47,8 +47,8 @@ public class EventDetail extends AppCompatActivity {
         eventDescripView.setText(Html.fromHtml(intent.getStringExtra("description")));
 
 
-        Button addToFaves = findViewById(R.id.add_to_faves);
-        addToFaves.setOnClickListener(new View.OnClickListener() {
+        Button removeFromFaves = findViewById(R.id.remove_from_faves);
+        removeFromFaves.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -58,9 +58,9 @@ public class EventDetail extends AppCompatActivity {
                 ICalendar ical = Biweekly.parse(str).first();
                 VEvent event = ical.getEvents().get(0);
                 String uID = event.getUid().getValue();
-                userFaves.child("Favorited-events").child(uID).setValue(str);
+                userFaves.child("Favorited-events").child(uID).removeValue();
 
-                Intent intent1 = new Intent(EventDetail.this, ProfileActivity.class);
+                Intent intent1 = new Intent(FavoriteDetail.this, ProfileActivity.class);
                 startActivity(intent1);
             }
         });
@@ -75,3 +75,4 @@ public class EventDetail extends AppCompatActivity {
 
     }
 }
+

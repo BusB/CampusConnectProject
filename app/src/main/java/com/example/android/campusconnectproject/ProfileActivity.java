@@ -27,7 +27,7 @@ public class ProfileActivity extends RecycleView {
 
     private List<VEvent> events = new ArrayList<>();
     private VEvent eventNew;
-    private EventAdapter adapter;
+    private FavoritesAdapter adapter;
     private android.support.v7.widget.RecyclerView recyclerView;
     private FirebaseAuth auth;
 
@@ -56,7 +56,7 @@ public class ProfileActivity extends RecycleView {
                         ICalendar ical = Biweekly.parse(str).first();
                         VEvent event = ical.getEvents().get(0);
                         events.add(event);
-                        adapter = new EventAdapter(events, ProfileActivity.this);
+                        adapter = new FavoritesAdapter(events, ProfileActivity.this);
                     }
                         recyclerView.setAdapter(adapter);
 
@@ -67,7 +67,7 @@ public class ProfileActivity extends RecycleView {
                 }
             });
 
-        adapter = new EventAdapter(events, this);
+        adapter = new FavoritesAdapter(events, this);
         recyclerView.setAdapter(adapter);
 
         BottomNavigationView navigation = findViewById(R.id.navigation);

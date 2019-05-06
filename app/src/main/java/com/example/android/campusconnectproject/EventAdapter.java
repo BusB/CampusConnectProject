@@ -31,6 +31,10 @@ public class EventAdapter extends RecyclerView.Adapter<EventViewHolder> {
     private SimpleDateFormat detailFormat;
     VEvent event;
 
+    public EventAdapter(){
+
+    }
+
     public EventAdapter(List<VEvent> events, Context context) {
         this.events = events;
         this.context = context;

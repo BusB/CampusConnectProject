@@ -19,5 +19,6 @@
     <string name="logout_button">Log Out</string>
     <string name="tc_logo">Teachers College</string>
     <string name="search_hint">search</string>
+    <string name="remove_from_faves">Remove from Favorites</string>
 
 </resources>
