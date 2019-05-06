@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.widget.LinearLayoutManager;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
@@ -85,6 +86,10 @@ public class ProfileActivity extends RecycleView {
                 return false;
             }
         });
+
+        Menu menu = navigation.getMenu();
+        MenuItem menuItem = menu.getItem(2);
+        menuItem.setChecked(true);
 
     }
 //    public void homeButton(MenuItem item) {

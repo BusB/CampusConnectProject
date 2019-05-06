@@ -21,11 +21,14 @@ import com.google.firebase.auth.FirebaseUser;
 
 import java.io.InputStream;
 import java.net.URL;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import biweekly.Biweekly;
 import biweekly.ICalendar;
 import biweekly.component.VEvent;
+import biweekly.property.DateStart;
 
 public class RecycleView extends AppCompatActivity {
 
@@ -68,8 +71,10 @@ public class RecycleView extends AppCompatActivity {
                     case R.id.menu_favorites:
                         Intent profile = new Intent(RecycleView.this, ProfileActivity.class);
                         startActivity(profile);
+
                         break;
                     case R.id.menu_home:
+
                         break;
                     case R.id.menu_search:
                         SearchManager searchManager =
@@ -111,7 +116,6 @@ public class RecycleView extends AppCompatActivity {
         String java = "hello";
         ical = Biweekly.parse(tcEventStream).first();
         events = ical.getEvents();
-
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
