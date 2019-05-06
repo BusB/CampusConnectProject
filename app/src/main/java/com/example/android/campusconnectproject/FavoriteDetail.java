@@ -2,13 +2,13 @@ package com.example.android.campusconnectproject;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.CalendarContract;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.text.Html;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -69,7 +69,21 @@ public class FavoriteDetail extends AppCompatActivity {
         addToCalendar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                FirebaseDatabase database = FirebaseDatabase.getInstance();
+                FirebaseUser user = auth.getCurrentUser();
+                DatabaseReference userFaves = database.getReference(user.getUid());
+                String str = intent.getStringExtra("event");
+                ICalendar ical = Biweekly.parse(str).first();
+                VEvent event = ical.getEvents().get(0);
+                String uID = event.getUid().getValue();
+                userFaves.child("Favorited-events").child(uID).setValue(str);
+                Intent calIntent = new Intent(Intent.ACTION_INSERT);
+                calIntent.setData(CalendarContract.Events.CONTENT_URI);
+                calIntent.putExtra(CalendarContract.Events.TITLE, intent.getStringExtra("name"));
+                calIntent.putExtra(CalendarContract.Events.DESCRIPTION, intent.getStringExtra("description"));
+                calIntent.putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, intent.getStringExtra("date start"));
+                calIntent.putExtra(CalendarContract.EXTRA_EVENT_END_TIME, intent.getStringExtra("date end"));
+                startActivity(calIntent);
             }
         });
 

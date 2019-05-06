@@ -2,25 +2,19 @@ package com.example.android.campusconnectproject;
 
 import android.content.Context;
 import android.content.Intent;
-import android.view.LayoutInflater;
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import org.jsoup.Jsoup;
 
-import java.io.File;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.List;
 
 import biweekly.Biweekly;
 import biweekly.ICalendar;
 import biweekly.component.VEvent;
-import biweekly.util.DateTimeComponents;
-import biweekly.util.ICalDateFormat;
-import biweekly.util.com.google.ical.values.DateValue;
-import biweekly.util.com.google.ical.values.DateValueImpl;
 
 
 public class EventAdapter extends RecyclerView.Adapter<EventViewHolder> {
@@ -60,7 +54,8 @@ public class EventAdapter extends RecyclerView.Adapter<EventViewHolder> {
                 Intent intent = new Intent(eventsListActivity, EventDetail.class);
                 intent.putExtra("event", Biweekly.write(ical).go());
                 intent.putExtra("name", event.getSummary().getValue());
-                intent.putExtra("date",  detailFormat.format(event.getDateStart().getValue()));
+                intent.putExtra("date start",  detailFormat.format(event.getDateStart().getValue()));
+                intent.putExtra("date end",  detailFormat.format(event.getDateEnd().getValue()));
                 intent.putExtra("description", Jsoup.parse(event.getDescription().getValue()).text());
                 eventsListActivity.startActivity(intent);
             }
@@ -75,6 +70,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventViewHolder> {
         event = events.get(position);
         dFormat = new SimpleDateFormat("EEE\nMMM\ndd");
         holder.getDateView().setText(dFormat.format(event.getDateStart().getValue()));
+        holder.getDateView().setText(dFormat.format(event.getDateEnd().getValue()));
         holder.getEventNameView().setText(event.getSummary().getValue());
 
     }

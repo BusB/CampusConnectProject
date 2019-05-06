@@ -2,7 +2,6 @@ package com.example.android.campusconnectproject;
 
 import android.content.Context;
 import android.content.Intent;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -49,7 +48,8 @@ public class FavoritesAdapter extends EventAdapter {
                     Intent intent = new Intent(eventsListActivity, FavoriteDetail.class);
                     intent.putExtra("event", Biweekly.write(ical).go());
                     intent.putExtra("name", event.getSummary().getValue());
-                    intent.putExtra("date",  detailFormat.format(event.getDateStart().getValue()));
+                    intent.putExtra("date start",  detailFormat.format(event.getDateStart().getValue()));
+                    intent.putExtra("date end",  detailFormat.format(event.getDateEnd().getValue()));
                     intent.putExtra("description", Jsoup.parse(event.getDescription().getValue()).text());
                     eventsListActivity.startActivity(intent);
                 }
@@ -64,6 +64,7 @@ public class FavoritesAdapter extends EventAdapter {
             event = events.get(position);
             dFormat = new SimpleDateFormat("EEE\nMMM\ndd");
             holder.getDateView().setText(dFormat.format(event.getDateStart().getValue()));
+            holder.getDateView().setText(dFormat.format(event.getDateEnd().getValue()));
             holder.getEventNameView().setText(event.getSummary().getValue());
 
         }
