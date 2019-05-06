@@ -15,6 +15,8 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.Date;
+
 import biweekly.Biweekly;
 import biweekly.ICalendar;
 import biweekly.component.VEvent;
@@ -82,8 +84,12 @@ public class EventDetail extends AppCompatActivity {
                 calIntent.setData(CalendarContract.Events.CONTENT_URI);
                 calIntent.putExtra(CalendarContract.Events.TITLE, eventNameView.getText());
                 calIntent.putExtra(CalendarContract.Events.DESCRIPTION, intent.getStringExtra("description"));
-                calIntent.putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, intent.getStringExtra("date start"));
-                calIntent.putExtra(CalendarContract.EXTRA_EVENT_END_TIME, intent.getStringExtra("date end"));
+                Date date = event.getDateStart().getValue();
+                long epochStart = date.getTime();
+                date = event.getDateEnd().getValue();
+                long epochEnd = date.getTime();
+                calIntent.putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, epochStart);
+                calIntent.putExtra(CalendarContract.EXTRA_EVENT_END_TIME, epochEnd);
                 startActivity(calIntent);
             }
         });
