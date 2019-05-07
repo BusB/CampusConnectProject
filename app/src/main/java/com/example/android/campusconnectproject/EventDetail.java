@@ -45,7 +45,7 @@ public class EventDetail extends AppCompatActivity {
 
 
         final Intent intent = getIntent();
-        dateView.setText(intent.getStringExtra("date"));
+        dateView.setText(intent.getStringExtra("date-start"));
         eventNameView.setText(intent.getStringExtra("name"));
         eventDescripView.setText(Html.fromHtml(intent.getStringExtra("description")));
 

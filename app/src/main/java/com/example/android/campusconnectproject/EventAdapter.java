@@ -54,8 +54,8 @@ public class EventAdapter extends RecyclerView.Adapter<EventViewHolder> {
                 Intent intent = new Intent(eventsListActivity, EventDetail.class);
                 intent.putExtra("event", Biweekly.write(ical).go());
                 intent.putExtra("name", event.getSummary().getValue());
-                intent.putExtra("date start",  detailFormat.format(event.getDateStart().getValue()));
-                intent.putExtra("date end",  detailFormat.format(event.getDateEnd().getValue()));
+                intent.putExtra("date-start",  detailFormat.format(event.getDateStart().getValue()));
+                intent.putExtra("date-end",  detailFormat.format(event.getDateEnd().getValue()));
                 intent.putExtra("description", Jsoup.parse(event.getDescription().getValue()).text());
                 eventsListActivity.startActivity(intent);
             }

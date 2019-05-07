@@ -107,7 +107,6 @@ public class RecycleView extends AppCompatActivity {
         enableStrictMode();
         URL tcEventURL = new URL("https://www.tc.columbia.edu/events/ics-feed/");
         InputStream tcEventStream = tcEventURL.openStream();
-        String java = "hello";
         ical = Biweekly.parse(tcEventStream).first();
         events = ical.getEvents();
     }

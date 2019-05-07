@@ -84,7 +84,6 @@ public class FavoriteDetail extends AppCompatActivity {
                 calIntent.setData(CalendarContract.Events.CONTENT_URI);
                 calIntent.putExtra(CalendarContract.Events.TITLE, intent.getStringExtra("name"));
                 calIntent.putExtra(CalendarContract.Events.DESCRIPTION, intent.getStringExtra("description"));
-                SimpleDateFormat df = new SimpleDateFormat("MMM dd yyyy HH:mm:ss.SSS zzz");
                 Date date = event.getDateStart().getValue();
                 long epochStart = date.getTime();
                 date = event.getDateEnd().getValue();
