@@ -6,6 +6,7 @@ import android.provider.CalendarContract;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.text.Html;
+import android.text.method.LinkMovementMethod;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -48,6 +49,7 @@ public class FavoriteDetail extends AppCompatActivity {
         dateView.setText(intent.getStringExtra("date"));
         eventNameView.setText(intent.getStringExtra("name"));
         eventDescripView.setText(Html.fromHtml(intent.getStringExtra("description")));
+        eventDescripView.setMovementMethod(LinkMovementMethod.getInstance());
 
 
         Button removeFromFaves = findViewById(R.id.remove_from_faves);
